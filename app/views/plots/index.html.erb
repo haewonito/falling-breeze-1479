@@ -1,0 +1,8 @@
+<h1>All Plot Numbers:</h1>
+
+<% @plots.each do |plot| %>
+  <div id="plot#{plot.number}">
+  <h3>Plant<%= plot.number %></h3><br>
+  Associated Plants: <%= plot.plants.pluck(:name) %>
+  </div>
+<% end %>

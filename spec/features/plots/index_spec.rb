@@ -17,17 +17,17 @@ RSpec.describe "plots index page", type: :feature do
       @hyacinth = Plant.create!(name: 'Hyacinth', description: 'Usually purple or white.', days_to_harvest: 200)
       @tulip = Plant.create!(name: 'Tulip', description: 'Sturdy and reliable.', days_to_harvest: 90)
 
-      PlotPlant.create!(plot_id: @plot25, plant_id: @rose.id)
-      PlotPlant.create!(plot_id: @plot25, plant_id: @lily.id)
-      PlotPlant.create!(plot_id: @plot25, plant_id: @hyacinth.id)
+      PlotPlant.create!(plot_id: @plot25.id, plant_id: @rose.id)
+      PlotPlant.create!(plot_id: @plot25.id, plant_id: @lily.id)
+      PlotPlant.create!(plot_id: @plot25.id, plant_id: @hyacinth.id)
 
-      PlotPlant.create!(plot_id: @plot2, plant_id: @rose.id)
-      PlotPlant.create!(plot_id: @plot2, plant_id: @lily.id)
-      PlotPlant.create!(plot_id: @plot2, plant_id: @hyacinth.id)
-      PlotPlant.create!(plot_id: @plot2, plant_id: @tulip.id)
+      PlotPlant.create!(plot_id: @plot2.id, plant_id: @rose.id)
+      PlotPlant.create!(plot_id: @plot2.id, plant_id: @lily.id)
+      PlotPlant.create!(plot_id: @plot2.id, plant_id: @hyacinth.id)
+      PlotPlant.create!(plot_id: @plot2.id, plant_id: @tulip.id)
 
-      PlotPlant.create!(plot_id: @plot26, plant_id: @hyacinth.id)
-      PlotPlant.create!(plot_id: @plot26, plant_id: @tulip.id)
+      PlotPlant.create!(plot_id: @plot26.id, plant_id: @hyacinth.id)
+      PlotPlant.create!(plot_id: @plot26.id, plant_id: @tulip.id)
 
       visit "/plots"
       #plot25 has rose, lily and hyacinth
@@ -48,7 +48,7 @@ RSpec.describe "plots index page", type: :feature do
     end
 
     xit "under each plot number I see names of all associated plants" do
-      within ("div#plot - #{@plot25.number}") do
+      within ("div#plot#{@plot25.number}") do
         expect(page).to have_content("Rose")
         expect(page).to have_content("Lily")
         expect(page).to have_content("Hyacinth")
@@ -56,9 +56,3 @@ RSpec.describe "plots index page", type: :feature do
     end
   end
 end
-
-User Story 1, Plots Index Page
-As a visitor
-When I visit the plots index page ('/plots')
-I see a list of all plot numbers
-And under each plot number I see names of all that plot's plants
