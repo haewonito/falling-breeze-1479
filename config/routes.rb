@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 get "/plots", to: "plots#index"
 
 delete '/plots/:plot_id/plants', to: 'plot_plants#destroy'
+
+get "/gardens/:garden_id", to: "gardens#show"
 end

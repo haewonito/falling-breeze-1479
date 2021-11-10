@@ -7,4 +7,8 @@ class Plot < ApplicationRecord
   def list_plant_names
     plants.pluck(:name)
   end
+
+
+
+
 end
