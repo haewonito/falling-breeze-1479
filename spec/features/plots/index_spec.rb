@@ -82,6 +82,8 @@ RSpec.describe "plots index page", type: :feature do
     end
 
     it "I see a link next to each plant to remove that plant from the plot" do
+
+save_and_open_page
       click_on "Remove #{@rose.name}"
 
       expect(current_path).to eq("/plots")

@@ -3,6 +3,9 @@
 <% @plots.each do |plot| %>
   <div id="plot#{plot.number}">
   <h3>Plant<%= plot.number %></h3><br>
-  Associated Plants: <%= plot.plants.pluck(:name) %>
+  Associated Plants: <break>
+    <% plot.list_plant_names.each do |name| %>
+      <br><%= name %>: <%= button_to "Remove #{name}", "/plots/#{plot.id}/plants", params: {plot_id_to_delete: plot.id, plant_name_to_delete: name}, method: :delete %>
+    <% end %>
   </div>
 <% end %>
